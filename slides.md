@@ -12,10 +12,7 @@ highlighter: shiki
 lineNumbers: false
 # some information about the slides, markdown enabled
 info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
-
-  Learn more at [Sli.dev](https://sli.dev)
+  ## History of electron-quick-start
 # persist drawings in exports and build
 drawings:
   persist: false
@@ -83,7 +80,7 @@ Node.js に移行、package.json が追加された。
 
 - index.html
 - main.js
-- package.json
+- **package.json**
 
 まだプロセスモデルが明確でなく、BrowserWindow に読み込まれた HTML の JavaScript でも Node.js API が使えるというユニークな開発環境のデモといった雰囲気。
 
@@ -100,7 +97,7 @@ renderer.js が追加された。
 - index.html
 - main.js
 - package.json
-- renderer.js
+- **renderer.js**
 
 ---
 
@@ -159,7 +156,7 @@ JS ファイルは preload.js を含む3ファイル構成に
 - index.html
 - main.js
 - package.json
-- preload.js
+- **preload.js**
 - renderer.js
 
 ---
@@ -276,7 +273,7 @@ index.html に Content Security Policy の meta タグが追加
 - package.json
 - preload.js
 - renderer.js
-- styles.css
+- **styles.css**
 
 ---
 
