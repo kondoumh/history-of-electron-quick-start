@@ -21,21 +21,14 @@ drawings:
   persist: false
 ---
 
-# Welcome to Slidev
+# History of electron-quick-start
 
-Presentation slides for developers
+Electron プログラミングモデルの変遷
 
-<div class="pt-12">
-  <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
-    Press Space for next page <carbon:arrow-right class="inline"/>
-  </span>
-</div>
+2022/2/15 kondoumh
 
 <div class="abs-br m-6 flex gap-2">
-  <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="text-xl icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon:edit />
-  </button>
-  <a href="https://github.com/slidevjs/slidev" target="_blank" alt="GitHub"
+  <a href="https://github.com/kondoumh/history-of-electron-quick-start" target="_blank" alt="GitHub"
     class="text-xl icon-btn opacity-50 !border-none !hover:text-white">
     <carbon-logo-github />
   </a>
@@ -47,337 +40,284 @@ The last comment block of each slide will be treated as slide notes. It will be 
 
 ---
 
-# What is Slidev?
+# electron-quick-start
 
-Slidev is a slides maker and presenter designed for developers, consist of the following features
+[GitHub - electron/electron-quick-start: Clone to try a simple Electron app](https://github.com/electron/electron-quick-start)
 
-- 📝 **Text-based** - focus on the content with Markdown, and then style them later
-- 🎨 **Themable** - theme can be shared and used with npm packages
-- 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
-- 🤹 **Interactive** - embedding Vue components to enhance your expressions
-- 🎥 **Recording** - built-in recording and camera view
-- 📤 **Portable** - export into PDF, PNGs, or even a hostable SPA
-- 🛠 **Hackable** - anything possible on a webpage
-
-<br>
-<br>
-
-Read more about [Why Slidev?](https://sli.dev/guide/why)
-
-<!--
-You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://sli.dev/guide/syntax#embedded-styles
--->
-
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
+- electron-quick-start は Electron でのプロジェクトのひな形となるアプリのリポジトリ
+- Electron が1.0に到達する以前の2015年からメンテナンスされている
+- Electron の進化とともにファイル構成もプログラミングモデルも変化してきた
 
 ---
 
-# Navigation
+# 2015/10/17
+ [8113791cebec956796e5a10562b64fa965754f7e](https://github.com/electron/electron-quick-start/tree/8113791cebec956796e5a10562b64fa965754f7e)
 
-Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://sli.dev/guide/navigation.html)
+最初期のコミットで、ファイルは2つ。(Node.js ではなく io.js を使用)
 
-### Keyboard Shortcuts
+- index.html
+- main.js
 
-|     |     |
-| --- | --- |
-| <kbd>right</kbd> / <kbd>space</kbd>| next animation or slide |
-| <kbd>left</kbd>  / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd> | previous slide |
-| <kbd>down</kbd> | next slide |
+index.html の `script` タグで io.js の process API をダイレクトに呼び出し。
 
-<!-- https://sli.dev/guide/animations.html#click-animations -->
-<img
-  v-click
-  class="absolute -bottom-9 -left-7 w-80 opacity-50"
-  src="https://sli.dev/assets/arrow-bottom-left.svg"
-/>
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
+```html {all|8-9}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello World!</title>
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+    We are using io.js <script>document.write(process.version)</script>
+    and Electron <script>document.write(process.versions['electron'])</script>.
+  </body>
+</html>
+```
+---
+
+# 2015/10/20 - electron-prebuild 0.34.0
+
+[fcc251352b84715b74be7ffff6cccf83eb796f91](https://github.com/electron/electron-quick-start/tree/fcc251352b84715b74be7ffff6cccf83eb796f91)
+
+Node.js に移行、package.json が追加された。
+
+- index.html
+- main.js
+- package.json
+
+まだプロセスモデルが明確でなく、BrowserWindow に読み込まれた HTML の JavaScript でも Node.js API が使えるというユニークな開発環境のデモといった雰囲気。
+
+![](images/electron-1.drawio.png)
 
 ---
-layout: image-right
-image: https://source.unsplash.com/collection/94734566/1920x1080
+
+# 2016/4/21 - electron-prebuild 0.37.0
+
+[1e287bdb624bb1a62362316994c226ba7d26f6a9](https://github.com/electron/electron-quick-start/tree/1e287bdb624bb1a62362316994c226ba7d26f6a9)
+
+renderer.js が追加された。
+
+- index.html
+- main.js
+- package.json
+- renderer.js
+
 ---
 
-# Code
+# 2016/4/21 - electron-prebuild 0.37.0
 
-Use code snippets and get the highlighting directly![^1]
+[1e287bdb624bb1a62362316994c226ba7d26f6a9](https://github.com/electron/electron-quick-start/tree/1e287bdb624bb1a62362316994c226ba7d26f6a9)
 
-```ts {all|2|1-6|9|all}
-interface User {
-  id: number
-  firstName: string
-  lastName: string
-  role: string
-}
+index.html のコメントに renderer process という言葉が出現。
 
-function updateUser(id: number, update: User) {
-  const user = getUser(id)
-  const newUser = {...user, ...update}  
-  saveUser(id, newUser)
-}
+```html {all|4|11-12}
+<html>
+  <body>
+    <h1>Hello World!</h1>
+    <!-- All of the Node.js APIs are available in this renderer process. -->
+    We are using node <script>document.write(process.versions.node)</script>,
+    Chromium <script>document.write(process.versions.chrome)</script>,
+    and Electron <script>document.write(process.versions.electron)</script>.
+  </body>
+
+  <script>
+    // You can also require other files to run in this process
+    require('renderer.js')
+  </script>
+</html>
 ```
 
-<arrow v-click="3" x1="400" y1="420" x2="230" y2="330" color="#564" width="3" arrowSize="1" />
-
-[^1]: [Learn More](https://sli.dev/guide/syntax.html#line-highlighting)
-
-<style>
-.footnotes-sep {
-  @apply mt-20 opacity-10;
-}
-.footnotes {
-  @apply text-sm opacity-75;
-}
-.footnote-backref {
-  display: none;
-}
-</style>
+renderer.js は script タグで require で読み込まれている。
 
 ---
 
-# Components
+# 2016/4/21 - electron-prebuild 0.37.0
 
-<div grid="~ cols-2 gap-4">
-<div>
+[1e287bdb624bb1a62362316994c226ba7d26f6a9](https://github.com/electron/electron-quick-start/tree/1e287bdb624bb1a62362316994c226ba7d26f6a9)
 
-You can use Vue components directly inside your slides.
 
-We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
+main process でウィンドウ制御、renderer process で Node.js の API も活用して UI のコードを書くというプログラミングモデル。
 
-```html
-<Counter :count="10" />
+両プロセス間の通信もあたり前に行われていた。
+
+![](images/electron-2.drawio.png)
+
+この構成が3年ぐらい続くことになる。
+
+---
+
+# 2019/6/8 - Electron 5.0.2
+
+[1cb6d17b40c6fc14fd6dc4e6f2a951558b7e7297](https://github.com/electron/electron-quick-start/tree/1cb6d17b40c6fc14fd6dc4e6f2a951558b7e7297)
+
+preload を使用する PR がマージされた。
+
+[feat: use a preload script instead of enabling nodeIntegration by malept · Pull Request #279 · electron/electron-quick-start](https://github.com/electron/electron-quick-start/pull/279)
+
+JS ファイルは preload.js を含む3ファイル構成に
+
+- index.html
+- main.js
+- package.json
+- preload.js
+- renderer.js
+
+---
+
+# 2019/6/8 - Electron 5.0.2
+
+[1cb6d17b40c6fc14fd6dc4e6f2a951558b7e7297](https://github.com/electron/electron-quick-start/tree/1cb6d17b40c6fc14fd6dc4e6f2a951558b7e7297)
+
+```html {all|14|9-11}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+    We are using Node.js <span id="node-version"></span>,
+    Chromium <span id="chrome-version"></span>,
+    and Electron <span id="electron-version"></span>.
+
+    <!-- You can also require other files to run in this process -->
+    <script src="./renderer.js"></script>
+  </body>
+</html>
 ```
 
-<!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
+- require ではなく src で renderer.js を読み込むように変更
+- Node の process API が直接使われていた部分が span 要素に
 
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
+---
 
-</div>
-<div>
+# 2019/6/8 - Electron 5.0.2
 
-```html
-<Tweet id="1390115482657726468" />
+[1cb6d17b40c6fc14fd6dc4e6f2a951558b7e7297](https://github.com/electron/electron-quick-start/tree/1cb6d17b40c6fc14fd6dc4e6f2a951558b7e7297)
+
+main.js で webPreferences で preload.js を読み込み。
+
+```js
+function createWindow () {
+  // Create the browser window.
+  mainWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js')
+    }
 ```
 
-<Tweet id="1390115482657726468" scale="0.65" />
+preload.js では、index.html の span 要素を指定して process API でバージョンをレンダリング。
 
-</div>
-</div>
-
-
----
-class: px-20
----
-
-# Themes
-
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
-
-<div grid="~ cols-2 gap-2" m="-t-2">
-
-```yaml
----
-theme: default
----
-```
-
-```yaml
----
-theme: seriph
----
-```
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true">
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true">
-
-</div>
-
-Read more about [How to use a theme](https://sli.dev/themes/use.html) and
-check out the [Awesome Themes Gallery](https://sli.dev/themes/gallery.html).
-
----
-preload: false
----
-
-# Animations
-
-Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
-
-```html
-<div
-  v-motion
-  :initial="{ x: -80 }"
-  :enter="{ x: 0 }">
-  Slidev
-</div>
-```
-
-<div class="w-60 relative mt-6">
-  <div class="relative w-40 h-40">
-    <img
-      v-motion
-      :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-square.png"
-    />
-    <img
-      v-motion
-      :initial="{ y: 500, x: -100, scale: 2 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-circle.png"
-    />
-    <img
-      v-motion
-      :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-triangle.png"
-    />
-  </div>
-
-  <div
-    class="text-5xl absolute top-14 left-40 text-[#2B90B6] -z-1"
-    v-motion
-    :initial="{ x: -80, opacity: 0}"
-    :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">
-    Slidev
-  </div>
-</div>
-
-<!-- vue script setup scripts can be directly used in markdown, and will only affects current page -->
-<script setup lang="ts">
-const final = {
-  x: 0,
-  y: 0,
-  rotate: 0,
-  scale: 1,
-  transition: {
-    type: 'spring',
-    damping: 10,
-    stiffness: 20,
-    mass: 2
+```js
+window.addEventListener('DOMContentLoaded', () => {
+  for (const versionType of ['chrome', 'electron', 'node']) {
+    document.getElementById(`${versionType}-version`).innerText = process.versions[versionType]
   }
-}
-</script>
-
-<div
-  v-motion
-  :initial="{ x:35, y: 40, opacity: 0}"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 3500 } }">
-
-[Learn More](https://sli.dev/guide/animations.html#motion)
-
-</div>
-
----
-
-# LaTeX
-
-LaTeX is supported out-of-box powered by [KaTeX](https://katex.org/).
-
-<br>
-
-Inline $\sqrt{3x-1}+(1+x)^2$
-
-Block
-$$
-\begin{array}{c}
-
-\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &
-= \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} & = 4 \pi \rho \\
-
-\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} & = \vec{\mathbf{0}} \\
-
-\nabla \cdot \vec{\mathbf{B}} & = 0
-
-\end{array}
-$$
-
-<br>
-
-[Learn more](https://sli.dev/guide/syntax#latex)
-
----
-
-# Diagrams
-
-You can create diagrams / graphs from textual descriptions, directly in your Markdown.
-
-<div class="grid grid-cols-3 gap-10 pt-4 -mb-6">
-
-```mermaid {scale: 0.5}
-sequenceDiagram
-    Alice->John: Hello John, how are you?
-    Note over Alice,John: A typical interaction
+})
 ```
 
-```mermaid {theme: 'neutral', scale: 0.8}
-graph TD
-B[Text] --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
-```
-
-```plantuml {scale: 0.7}
-@startuml
-
-package "Some Group" {
-  HTTP - [First Component]
-  [Another Component]
-}
-
-node "Other Groups" {
-  FTP - [Second Component]
-  [First Component] --> FTP
-}
-
-cloud {
-  [Example 1]
-}
-
-
-database "MySql" {
-  folder "This is my folder" {
-    [Folder 3]
-  }
-  frame "Foo" {
-    [Frame 4]
-  }
-}
-
-
-[Another Component] --> [Example 1]
-[Example 1] --> [Folder 3]
-[Folder 3] --> [Frame 4]
-
-@enduml
-```
-
-</div>
-
-[Learn More](https://sli.dev/guide/syntax.html#diagrams)
-
-
----
-layout: center
-class: text-center
 ---
 
-# Learn More
+# 2019/6/8 - Electron 5.0.2
 
-[Documentations](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/showcases.html)
+[1cb6d17b40c6fc14fd6dc4e6f2a951558b7e7297](https://github.com/electron/electron-quick-start/tree/1cb6d17b40c6fc14fd6dc4e6f2a951558b7e7297)
+
+- renderer process を Node.js から分離し、ContextBridge を介して main process や Node.js API を使用
+  - preload で定義されているメソッドやイベントは window オブジェクトのメソッドやイベントに見える
+- renderer プロセスは DOM の操作に特化し、ブラウザで実行される JavaScript と同等のサンドボックス環境になった[^1]。
+
+[^1]: preload.js で DOM 操作やってしまってるのでサンプルとしては微妙だが。
+
+![](images/electron-3.drawio.png)
+
+---
+
+# 2019/11/13 - Electron 7.1.1
+
+[0ed07b8a7b21da2c9903769af44cb3a49c49fd68](https://github.com/electron/electron-quick-start/tree/0ed07b8a7b21da2c9903769af44cb3a49c49fd68)
+
+index.html に Content Security Policy の meta タグが追加
+
+```html {all|5-7}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <title>Hello World!</title>
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+    We are using Node.js <span id="node-version"></span>,
+    Chromium <span id="chrome-version"></span>,
+    and Electron <span id="electron-version"></span>.
+
+    <!-- You can also require other files to run in this process -->
+    <script src="./renderer.js"></script>
+  </body>
+</html>
+```
+
+---
+
+# 2021/10/7 - Electron 15.1.1
+
+[4ff40bc838cc4c009f569300a5ba8e6a68924223](https://github.com/electron/electron-quick-start/tree/4ff40bc838cc4c009f569300a5ba8e6a68924223)
+
+デフォルトの CSS ファイルが追加された。
+
+- index.html
+- main.js
+- package.json
+- preload.js
+- renderer.js
+- styles.css
+
+---
+
+# 2022/1/3 - Electron 16.0.5
+
+[bc9cce16d583ba3b69aae318b3904d8a04979058](https://github.com/electron/electron-quick-start/tree/bc9cce16d583ba3b69aae318b3904d8a04979058)
+
+inline CSS を 許可する PR がマージされた。
+
+[CORS: Allow inline CSS and style attributes by Kilian · Pull Request #550 · electron/electron-quick-start](https://github.com/electron/electron-quick-start/pull/550)
+
+```html {all|6}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+    <link href="./styles.css" rel="stylesheet">
+    <title>Hello World!</title>
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+    We are using Node.js <span id="node-version"></span>,
+    Chromium <span id="chrome-version"></span>,
+    and Electron <span id="electron-version"></span>.
+    <script src="./renderer.js"></script>
+  </body>
+</html>
+```
+
+---
+
+# まとめ
+
+以上
+
+ここ数年で初期のプロセスモデルが大きく変更され、Node.js から renderer プロセスを分離し DOM 操作だけを行うというブラウザでの実行モデルに近づいた。
+
+electron-quick-start のコードは最小限なもので、実開発でどのようにコードを書くべきというところまでは示していないが、標準的な構成を示すという意味で重要な存在。
+
+今後は、ES Module 対応が入ってくるのではないかと予想。
+
+---
