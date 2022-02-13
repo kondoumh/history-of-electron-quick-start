@@ -85,7 +85,7 @@ Node.js に移行、package.json が追加された。
 
 まだプロセスモデルが明確でなく、BrowserWindow に読み込まれた HTML の JavaScript でも Node.js API が使えるというユニークな開発環境のデモといった雰囲気。
 
-<img src="images/electron-1.drawio.png" class="ic">
+<img src="/electron-1.drawio.png" class="ic">
 
 <style>
   li:nth-child(3) {
@@ -155,7 +155,7 @@ main process でウィンドウ制御、renderer process で Node.js の API も
 
 両プロセス間の通信もあたり前に行われていた。
 
-<img src="images/electron-2.drawio.png" class="ic">
+<img src="/electron-2.drawio.png" class="ic">
 
 この構成が3年ぐらい続くことになる。
 
@@ -266,7 +266,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 [^1]: preload.js で DOM 操作やってしまってるのでサンプルとしては微妙だが。
 
-<img src="images/electron-3.drawio.png" class="ic">
+<img src="/electron-3.drawio.png" class="ic">
 
 <style>
   .ic {
