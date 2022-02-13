@@ -41,9 +41,13 @@ The last comment block of each slide will be treated as slide notes. It will be 
 
 [GitHub - electron/electron-quick-start: Clone to try a simple Electron app](https://github.com/electron/electron-quick-start)
 
+<v-clicks>
+
 - electron-quick-start は Electron でのプロジェクトのひな形となるアプリのリポジトリ
 - Electron が1.0に到達する以前の2015年からメンテナンスされている
 - Electron の進化とともにファイル構成もプログラミングモデルも変化してきた
+
+</v-clicks>
 
 ---
 
@@ -81,7 +85,7 @@ Node.js に移行、package.json が追加された。
 
 - <ph-file-html /> index.html
 - <ph-file-js /> main.js
-- <codicon-json /> **package.json**
+- <span class="animate-pulse"><codicon-json /> **package.json**</span>
 
 まだプロセスモデルが明確でなく、BrowserWindow に読み込まれた HTML の JavaScript でも Node.js API が使えるというユニークな開発環境のデモといった雰囲気。
 
@@ -111,7 +115,7 @@ renderer.js が追加された。
 - <ph-file-html /> index.html
 - <ph-file-js /> main.js
 - <codicon-json /> package.json
-- <ph-file-js /> **renderer.js**
+- <span class="animate-pulse"><ph-file-js /> **renderer.js**</span>
 
 <style>
   li:nth-child(4) {
@@ -186,18 +190,18 @@ JS ファイルは preload.js を含む3ファイル構成に
 - <ph-file-html /> index.html
 - <ph-file-js /> main.js
 - <codicon-json /> package.json
-- <ph-file-js /> **preload.js**
+- <span class="animate-pulse"><ph-file-js /> **preload.js**</span>
 - <ph-file-js /> renderer.js
 
 <style>
   li:nth-child(2) {
-    color: orange;
+    color: blue;
   }
   li:nth-child(4) {
     color: red;
   }
   li:nth-child(5) {
-    color: orange;
+    color: blue;
   }
 </style>
 
@@ -325,7 +329,7 @@ index.html に Content Security Policy の meta タグが追加
 - <codicon-json /> package.json
 - <ph-file-js /> preload.js
 - <ph-file-js /> renderer.js
-- <ph-file-css /> **styles.css**
+- <span class="animate-pulse"><ph-file-css /> **styles.css**</span>
 
 <style>
   li:nth-child(6) {
@@ -369,7 +373,11 @@ inline CSS を 許可する PR がマージされた。
 
 ``
 
+<v-clicks>
+
 - ここ数年で初期のプロセスモデルが大きく変わって renderer process は Node.js の世界から分離されたブラウザでの実行モデルに近づいた。
 - electron-quick-start のコードは最小限で、実開発でコードをどう書くべきということまでは示していない。
 - 標準的な構成を示すという意味で重要な存在。
 - 今後は、ES Modules 対応などが入ってくるのではないかと予想。
+
+</v-clicks>
