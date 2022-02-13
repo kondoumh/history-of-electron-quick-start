@@ -52,8 +52,8 @@ The last comment block of each slide will be treated as slide notes. It will be 
 
 最初期のコミットで、ファイルは2つ。(Node.js ではなく io.js を使用)
 
-- index.html
-- main.js
+- <ph-file-html /> index.html
+- <ph-file-js /> main.js
 
 index.html の `script` タグで io.js の process API をダイレクトに呼び出し。
 
@@ -79,9 +79,9 @@ index.html の `script` タグで io.js の process API をダイレクトに呼
 
 Node.js に移行、package.json が追加された。
 
-- index.html
-- main.js
-- **package.json**
+- <ph-file-html /> index.html
+- <ph-file-js /> main.js
+- <codicon-json /> **package.json**
 
 まだプロセスモデルが明確でなく、BrowserWindow に読み込まれた HTML の JavaScript でも Node.js API が使えるというユニークな開発環境のデモといった雰囲気。
 
@@ -93,6 +93,8 @@ Node.js に移行、package.json が追加された。
   }
   .ic {
     display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
     margin-left: auto;
     margin-right: auto;
   }
@@ -106,10 +108,10 @@ Node.js に移行、package.json が追加された。
 
 renderer.js が追加された。
 
-- index.html
-- main.js
-- package.json
-- **renderer.js**
+- <ph-file-html /> index.html
+- <ph-file-js /> main.js
+- <codicon-json /> package.json
+- <ph-file-js /> **renderer.js**
 
 <style>
   li:nth-child(4) {
@@ -162,6 +164,8 @@ main process でウィンドウ制御、renderer process で Node.js の API も
 <style>
   .ic {
     display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
     margin-left: auto;
     margin-right: auto;
   }
@@ -179,11 +183,11 @@ preload を使用する PR がマージされた。
 
 JS ファイルは preload.js を含む3ファイル構成に
 
-- index.html
-- main.js
-- package.json
-- **preload.js**
-- renderer.js
+- <ph-file-html /> index.html
+- <ph-file-js /> main.js
+- <codicon-json /> package.json
+- <ph-file-js /> **preload.js**
+- <ph-file-js /> renderer.js
 
 <style>
   li:nth-child(2) {
@@ -271,6 +275,8 @@ window.addEventListener('DOMContentLoaded', () => {
 <style>
   .ic {
     display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
     margin-left: auto;
     margin-right: auto;
   }
@@ -314,12 +320,12 @@ index.html に Content Security Policy の meta タグが追加
 
 デフォルトの CSS ファイルが追加された。
 
-- index.html
-- main.js
-- package.json
-- preload.js
-- renderer.js
-- **styles.css**
+- <ph-file-html /> index.html
+- <ph-file-js /> main.js
+- <codicon-json /> package.json
+- <ph-file-js /> preload.js
+- <ph-file-js /> renderer.js
+- <ph-file-css /> **styles.css**
 
 <style>
   li:nth-child(6) {
