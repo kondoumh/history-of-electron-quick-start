@@ -70,6 +70,7 @@ index.html の `script` タグで io.js の process API をダイレクトに呼
   </body>
 </html>
 ```
+
 ---
 
 # 2015/10/20 - electron-prebuild 0.34.0
@@ -84,7 +85,18 @@ Node.js に移行、package.json が追加された。
 
 まだプロセスモデルが明確でなく、BrowserWindow に読み込まれた HTML の JavaScript でも Node.js API が使えるというユニークな開発環境のデモといった雰囲気。
 
-![](images/electron-1.drawio.png)
+<img src="images/electron-1.drawio.png" class="ic">
+
+<style>
+  li:nth-child(3) {
+    color: red;
+  }
+  .ic {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>
 
 ---
 
@@ -98,6 +110,12 @@ renderer.js が追加された。
 - main.js
 - package.json
 - **renderer.js**
+
+<style>
+  li:nth-child(4) {
+    color: red;
+  }
+</style>
 
 ---
 
@@ -137,9 +155,17 @@ main process でウィンドウ制御、renderer process で Node.js の API も
 
 両プロセス間の通信もあたり前に行われていた。
 
-![](images/electron-2.drawio.png)
+<img src="images/electron-2.drawio.png" class="ic">
 
 この構成が3年ぐらい続くことになる。
+
+<style>
+  .ic {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>
 
 ---
 
@@ -158,6 +184,18 @@ JS ファイルは preload.js を含む3ファイル構成に
 - package.json
 - **preload.js**
 - renderer.js
+
+<style>
+  li:nth-child(2) {
+    color: orange;
+  }
+  li:nth-child(4) {
+    color: red;
+  }
+  li:nth-child(5) {
+    color: orange;
+  }
+</style>
 
 ---
 
@@ -228,7 +266,15 @@ window.addEventListener('DOMContentLoaded', () => {
 
 [^1]: preload.js で DOM 操作やってしまってるのでサンプルとしては微妙だが。
 
-![](images/electron-3.drawio.png)
+<img src="images/electron-3.drawio.png" class="ic">
+
+<style>
+  .ic {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>
 
 ---
 
@@ -275,6 +321,12 @@ index.html に Content Security Policy の meta タグが追加
 - renderer.js
 - **styles.css**
 
+<style>
+  li:nth-child(6) {
+    color: red;
+  }
+</style>
+
 ---
 
 # 2022/1/3 - Electron 16.0.5
@@ -315,5 +367,3 @@ inline CSS を 許可する PR がマージされた。
 - electron-quick-start のコードは最小限で、実開発でコードをどう書くべきということまでは示していない。
 - 標準的な構成を示すという意味で重要な存在。
 - 今後は、ES Module 対応が入ってくるのではないかと予想。
-
----
