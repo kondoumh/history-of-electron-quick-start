@@ -57,7 +57,7 @@ The last comment block of each slide will be treated as slide notes. It will be 
 
 index.html の `script` タグで io.js の process API をダイレクトに呼び出し。
 
-```html {all|8-9}
+```html {8,9}
 <!DOCTYPE html>
 <html>
   <head>
@@ -107,7 +107,7 @@ renderer.js が追加された。
 
 index.html のコメントに renderer process という言葉が出現。
 
-```html {all|4|11-12}
+```html {4,12}
 <html>
   <body>
     <h1>Hello World!</h1>
@@ -165,7 +165,7 @@ JS ファイルは preload.js を含む3ファイル構成に
 
 [1cb6d17b40c6fc14fd6dc4e6f2a951558b7e7297](https://github.com/electron/electron-quick-start/tree/1cb6d17b40c6fc14fd6dc4e6f2a951558b7e7297)
 
-```html {all|14|9-11}
+```html {14,9-11}
 <!DOCTYPE html>
 <html>
   <head>
@@ -184,8 +184,8 @@ JS ファイルは preload.js を含む3ファイル構成に
 </html>
 ```
 
-- require ではなく src で renderer.js を読み込むように変更
 - Node の process API が直接使われていた部分が span 要素に
+- require ではなく src で renderer.js を読み込むように変更
 
 ---
 
@@ -193,9 +193,9 @@ JS ファイルは preload.js を含む3ファイル構成に
 
 [1cb6d17b40c6fc14fd6dc4e6f2a951558b7e7297](https://github.com/electron/electron-quick-start/tree/1cb6d17b40c6fc14fd6dc4e6f2a951558b7e7297)
 
-main.js で webPreferences で preload.js を読み込み。
+BrowserWindow 生成時の webPreferences で preload.js を読み込み。
 
-```js
+```js {7}
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
@@ -238,7 +238,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 index.html に Content Security Policy の meta タグが追加
 
-```html {all|5-7}
+```html {5-7}
 <!DOCTYPE html>
 <html>
   <head>
@@ -285,7 +285,7 @@ inline CSS を 許可する PR がマージされた。
 
 [CORS: Allow inline CSS and style attributes by Kilian · Pull Request #550 · electron/electron-quick-start](https://github.com/electron/electron-quick-start/pull/550)
 
-```html {all|6}
+```html {6}
 <!DOCTYPE html>
 <html>
   <head>
@@ -307,14 +307,13 @@ inline CSS を 許可する PR がマージされた。
 
 ---
 
-# まとめ
+# 最後に
 
-以上
+``
 
-ここ数年で初期のプロセスモデルが大きく変更され、Node.js から renderer プロセスを分離し DOM 操作だけを行うというブラウザでの実行モデルに近づいた。
-
-electron-quick-start のコードは最小限なもので、実開発でどのようにコードを書くべきというところまでは示していないが、標準的な構成を示すという意味で重要な存在。
-
-今後は、ES Module 対応が入ってくるのではないかと予想。
+- ここ数年で初期のプロセスモデルが大きく変わって renderer process は Node.js の世界から分離されたブラウザでの実行モデルに近づいた。
+- electron-quick-start のコードは最小限で、実開発でコードをどう書くべきということまでは示していない。
+- 標準的な構成を示すという意味で重要な存在。
+- 今後は、ES Module 対応が入ってくるのではないかと予想。
 
 ---
