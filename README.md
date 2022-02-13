@@ -1,9 +1,9 @@
 # Slide - history-of-electron-quick-start
 
-This slide traces the evolution of Electron's programming model from the commit history of electron-quick-start.
+This slide traces the evolution of Electron's programming model from the commit history of [electron-quick-start](https://github.com/electron/electron-quick-start).
 
 - hosted on [Netlify](https://www.netlify.com/)
-- powered by [Slidev](https://github.com/slidevjs/slidev)!
+- powered by [Slidev](https://github.com/slidevjs/slidev)
 
 https://history-of-electron-quick-start.netlify.app/
 
