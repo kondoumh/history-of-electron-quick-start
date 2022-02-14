@@ -91,6 +91,8 @@ Node.js に移行、package.json が追加された。
 
 <img src="/electron-1.drawio.png" class="ic">
 
+Atom Editor v1.2 や VS Code v1.0 はこの頃リリースされていた。
+
 <style>
   li:nth-child(3) {
     color: red;
