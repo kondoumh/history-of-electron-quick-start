@@ -6,15 +6,15 @@
     "export": "slidev export"
   },
   "dependencies": {
-    "@slidev/cli": "^0.40.3",
+    "@slidev/cli": "^0.42.4",
     "@slidev/theme-default": "*",
     "@slidev/theme-seriph": "*"
   },
   "name": "history-of-electron-quick-start",
   "devDependencies": {
-    "@iconify-json/bx": "^1.0.3",
-    "@iconify-json/codicon": "^1.0.13",
-    "@iconify-json/uim": "^1.0.2",
-    "@iconify-json/vscode-icons": "^1.0.6"
+    "@iconify-json/bx": "^1.1.6",
+    "@iconify-json/codicon": "^1.1.26",
+    "@iconify-json/uim": "^1.1.5",
+    "@iconify-json/vscode-icons": "^1.1.25"
   }
 }
